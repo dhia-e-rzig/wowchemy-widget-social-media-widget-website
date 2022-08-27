@@ -1,14 +1,18 @@
 {{ $page := .root }}
 {{ $section := .page }}
-{{ $columns := $page.Params.design.columns | default "2" }}
-<div class="universal-wrapper pt-2">
-  <h2>{{$section.Title}}</h2>
-</div>
-<div class="col-12 {{if eq $columns "2"}}col-lg-8{{end}}">
-  <div class="container">
-    <div class="twitter">
-    <a class="twitter-timeline" data-height="500" data-width="500" href="https://twitter.com/dhia_rzig?ref_src=twsrc%5Etfw">Tweets by dhia_rzig</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-     </div>
-   </div>
-</section>
+{{ $sass := resources.Get "main.scss" }}
+{{ $style := $sass | resources.ToCSS | resources.Fingerprint }}
+<div class="row featurette">
+  {{ with $section.Title }}
+  <div class="col-md-12 section-heading">
+    <h1>{{ . | markdownify | emojify }}</h1>
+    {{ if $page.Params.subtitle }}<p>{{ $page.Params.subtitle | markdownify | emojify }}</p>{{ end }}
+  </div>
+  {{ end }}
 
+  <div class="col-md-12">
+    <a class="twitter-timeline" data-height="500" data-width="500" href="https://twitter.com/dhia_rzig?ref_src=twsrc%5Etfw">Tweets by dhia_rzig</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+
+</div>
