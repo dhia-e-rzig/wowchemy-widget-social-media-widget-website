@@ -1,7 +1,7 @@
 {{ $page := .root }}
 {{ $section := .page }}
-{{ $sass := resources.Get "main.scss" }}
-{{ $style := $sass | resources.ToCSS | resources.Fingerprint }}
+{{/*  {{ $sass := resources.Get "main.scss" }}  */}}
+{{/*  {{ $style := $sass | resources.ToCSS | resources.Fingerprint }}  */}}
 <div class="row featurette">
   {{ with $section.Title }}
   <div class="col-md-12 section-heading">
